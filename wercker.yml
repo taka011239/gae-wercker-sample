@@ -18,14 +18,9 @@ build:
         code: |-
           go test ./...
 
-    - script:
-        name: Copy output
-        code: |-
-          rsync -avz "$WERCKER_SOURCE_DIR/" "$WERCKER_OUTPUT_DIR"
-
 deploy:
   steps:
     - pjvds/setup-go-workspace
 
-    - taka011239/go-appengine-deploy-oauth@0.0.1:
+    - taka011239/go-appengine-deploy-oauth@0.0.2:
         token: $APP_ENGINE_TOKEN
